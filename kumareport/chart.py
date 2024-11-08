@@ -8,7 +8,7 @@ from .database import Database
 
 
 def chart_plotly(
-    start: datetime, end: datetime, tagname=None, caption: Optional[str] = None
+    start: datetime, end: datetime, tagname=None, caption: Optional[str] = None, aim: Optional[float] = None
 ):
     """Returns a plotly chart for the given timespan."""
     db = Database.db
@@ -39,4 +39,7 @@ def chart_plotly(
             excel['Uptime'][i] = db.percent_by_monitor_id(mon_id, start, end)
 
     data = pd.DataFrame.from_dict(excel)
-    return px.bar(data, x='Name', y='Uptime', hover_data=['Name'], title=caption)
+    fig = px.bar(data, x='Name', y='Uptime', hover_data=['Name'], title=caption)
+    if aim:
+        fig.add_hline(aim, line_color='Red')
+    return fig

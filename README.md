@@ -27,9 +27,11 @@ Usage: python -m kumareport [OPTIONS]
   instead.
 
 Options:
-  -c, --caption TEXT  Optional chart title
-  -t, --tag TEXT      Tagname of the monitors to include in the report
-  --db FILENAME       Uptime Kuma database path.  [required]
-  -d, --days INTEGER  Number of days to report.  [required]
-  --help              Show this message and exit.
+  -c, --caption TEXT     Optional chart title
+  -t, --tag TEXT         Tagname of the monitors to include in the report
+  --db FILENAME          Uptime Kuma database path.  [required]
+  -d, --days INTEGER     Number of days to report.  [required]
+  -a, --aim FLOAT RANGE  Indicate target availability percentage with a red
+                         line  [0<=x<=100]
+  --help                 Show this message and exit.
 ```
